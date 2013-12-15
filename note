@@ -1,0 +1,7 @@
+
+2561  set img class: none_display to make next famous model no display
+2569  comment out: this.node.add(this.nextDescriptionMod).link(this.nextDescription)
+2720  change this.activate() to be this.deactivate()  
+2758  click
+3823  comment out  this.node.add(this.buttonModifier).link(this.button)       
+

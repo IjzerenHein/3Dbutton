@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by famo.us (http://codepen.io/befamous/pen/eAlwd)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>3D Torque Buttons - CodePen</title>
+
+  <base href="http://demo.famo.us/torque/" />
+
+  <link rel='stylesheet prefetch' href='http://demo.famo.us/torque/css/famous.css'>
+<link rel='stylesheet prefetch' href='http://demo.famo.us/torque/css/ui.css'>
+<link rel='stylesheet prefetch' href='http://demo.famo.us/torque/css/fonts.css'>
+<link rel='stylesheet prefetch' href='http://demo.famo.us/torque/css/famous-signup.css'>
+
+  <style>/* begin styling */
+html { 
+    background-color: #111;
+    color: white;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 14px;
+}
+
+img { 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#main {
+    -webkit-perspective: 500px;
+    perspective: 500px; 
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Avenir Next W10 Medium';
+    font-size: 24px;
+}
+
+h5 { 
+    font-size: 16px;
+}
+
+p { 
+    font-family: 'Avenir Next W01 Thin';
+    font-size: 18px;
+    line-height: 24px;
+}
+a { 
+    font-family: 'Avenir Next W10 Medium';
+}
+
+.backface-visible {
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible; /* Chrome and Safari */
+    -moz-backface-visibility: visible; /* Firefox */
+}
+.white              { color: white; }
+
+.bor_clear  { border: 0; }
+.bor_clear:focus { outline: 0 }
+
+.left       { float: left; }
+.right      { float: right; }
+.inline     { display: inline; }
+.block      { display: block; } 
+.clear      { clear: both; }
+.absolute   { position: absolute }
+
+.description-panel {
+    background-color: rgba(77, 77, 77, 0.5);
+}
+.description-closing-tab {
+    border: 1px solid white;
+}
+
+.no-user-select { 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.counter-number { 
+    font-family: 'Avenir Next W10 Bold';
+    text-align: center;
+    font-size: 40px;
+}
+
+.feedback-font { 
+    font-family:"Comic Strip W95 Exclaim";
+    font-size: 200px;
+
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.25)));
+    text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+
+.alarm-bg { 
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,0) 0%, rgba(243,188,182,0) 32%, rgba(219,45,26,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,0)), color-stop(32%,rgba(243,188,182,0)), color-stop(100%,rgba(219,45,26,1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,0) 0%,rgba(243,188,182,0) 32%,rgba(219,45,26,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,0) 0%,rgba(243,188,182,0) 32%,rgba(219,45,26,1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,0) 0%,rgba(243,188,182,0) 32%,rgba(219,45,26,1) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  rgba(255,255,255,0) 0%,rgba(243,188,182,0) 32%,rgba(219,45,26,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#db2d1a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.core-nextDescription a {
+    color: #ffffff;
+    line-height: 18px;
+}
+.core-next-demo { 
+    font-size: 12px;
+}
+
+.textinput
+{        
+    height:40px; 
+    width:100%; 
+    padding-left: 6px;     
+    padding-top: 0px;     
+    color: rgba(255, 255, 255, .750);
+    font-size: 24px; 
+    font-family: 'Avenir Next W10 Thin';
+    background-color:rgba(0, 0, 0, 0.0); 
+    border: 1px solid rgba(255, 255, 255, .750);   
+    outline-width: 0px;
+}
+
+.textinput:focus {
+    color: rgba(255, 255, 255, 1.0);
+    border: 1px solid rgba(255, 255, 255, 1.0);   
+    outline-width: 0px;    
+}
+
+.submit {
+    padding-top: 9px;
+    padding-left: 4px;
+    line-height: 24px;
+    font-size: 24px; 
+    font-family: 'Avenir Next W10 Thin';   
+}
+
+.scene-menu-label { 
+
+    border: 1px solid #111;
+    border-radius: 5px;
+    background-color: rgba( 77, 80, 85, 0.5 );
+    cursor: pointer;
+}
+
+.scene-menu-item { 
+
+    cursor: pointer;
+    border-radius: 5px;
+    border-bottom: 1px solid #333;
+    border-top: 1px solid #666;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    background-color: rgba( 30, 30, 35, .5 );
+}
+
+.scene-menu-item:hover { 
+
+    background-color: #222;
+
+}
+
+.scene-menu-label:hover { 
+    background: rgb(168,168,168); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(168,168,168,1) 0%, rgba(132,132,132,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(168,168,168,1)), color-stop(100%,rgba(132,132,132,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(168,168,168,1) 0%,rgba(132,132,132,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(168,168,168,1) 0%,rgba(132,132,132,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(168,168,168,1) 0%,rgba(132,132,132,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(168,168,168,1) 0%,rgba(132,132,132,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a8a8a8', endColorstr='#848484',GradientType=0 ); /* IE6-9 */
+}
+
+.ui-label { 
+    font-family: 'Avenir Next W10 Medium';
+}</style>
+
+  <script>
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    if (false) {
+      window.ontouchstart = function(){};
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <!--
+Join over 70,000 developers in our beta program at http://famo.us.
+
+Famo.us is a free, open source Javascript development platform that can build apps, games and interfaces using HTML5 and WebGL.
+
+We have built a pure JS renderer and 3D physics engine. We've wrapped these engines with an enterprise grade platform that is easy to use.
+
+Each week we release new examples.  If you are a blogger and would like early access so you can write about them please email Ryan@famo.us.
+
+Full public beta begins late February of 2014.
+-->
+
+  <script>
+
+</script>
+  <script src='https://s3-us-west-1.amazonaws.com/demo.famo.us/torque/famous.lib.js'></script>
+
+  <script>
+    //CodePen Evaluation License
+//
+//Copyright (c) 2013 Famous Industries, Inc.
+//
+//Non-sublicensable permission is hereby granted, free of charge, to any person obtaining a 
+//copy of this software and associated documentation files directly from codepen.io (the 
+//"Software"), solely to internally make and internally use copies of the Software to test, 
+//explore, and evaluate the Software solely in such person¡¯s non-commercial, non-
+//production environments, provided that the above copyright notice and this permission 
+//notice shall be included in all copies or substantial portions of the Software. 
+//
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+//EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+//MERCHANTABILITY, FITNESS FOR A ARTICULAR PURPOSE AND 
+//NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+//HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER 
+//IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR 
+//IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+//SOFTWARE.
+//
+
+Famous(function(require, exports, module) 
+{    
+    require('famous-sync/FastClick');
+
+    var Engine          = require('famous/Engine');        
+    var SceneController = require('app/SceneController');
+    var RegisterEasing  = require('famous-animation/RegisterEasing');
+    var KeyCodes        = require('famous-utils/KeyCodes');
+    var Signup          = require('core/Signup2');
+
+    var SignupContent = require('core/SignupContent');
+    //SignupContent.setSubHeadline('<h3 class="random">something</h3>' );
+
+    // Scenes
+    var TorqueScene     = require('app/scenes/TorqueScene');
+    var XButton         = require('app/scenes/XButton');
+    var TiledScene      = require('app/scenes/TiledScene');
+    var Stop            = require('app/scenes/Stop');
+    var NuclearScene    = require('app/scenes/NuclearScene');
+    var Nananana        = require('app/scenes/Nananana');
+    
+    console.log("sssssssssssssssssssssssssssssssss"+Stop);
+
+    // Persistant Views
+    var CounterView = require('app/scenes/CounterView');
+    var SceneView   = require('app/widgets/SceneMenu');
+
+    //Signup.setMessage('test');
+
+    var mainCtx = Engine.createContext();
+    mainCtx.setPerspective( 1000 );
+
+    var signup = new Signup();
+
+    mainCtx.add( SceneController );
+    mainCtx.add( signup );
+
+    SceneController.addScenes({
+        'Button'   : XButton,
+        'Torque'    : TorqueScene,
+        'Stop'      : Stop,
+        'Nuclear'   : NuclearScene,
+        'Batman'    : Nananana
+    });
+    SceneController.setScene('Nuclear');
+
+    CounterView.setCtx( mainCtx );
+    SceneView.setCtx( mainCtx );
+
+    Engine.on('keydown', function ( e ) {
+
+        if( e.keyCode == KeyCodes.LEFT_ARROW ) { 
+            SceneController.prev();
+
+        } else if ( e.keyCode == KeyCodes.RIGHT_ARROW ) {
+            SceneController.next();
+
+        }
+    });
+
+});
+    //@ sourceURL=pen.js
+  </script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- <base href="http://demo.famo.us/torque/" /> -->
+ <base href="https://c9.io/yellowbang/hellobon/workspace/3Dbutton/"/> 
+  <link rel='stylesheet prefetch' href='torque/css/famous.css'>
+  <link rel='stylesheet prefetch' href='torque/css/ui.css'>
+  <link rel='stylesheet prefetch' href='torque/css/fonts.css'>
+  <link rel='stylesheet prefetch' href='torque/css/famous-signup.css'>
+</head>
+<body>
+  <script src='torque/famous.lib.js'></script>
+
+  <script>
+Famous(function(require) {    
+    var Engine          = require('famous/Engine');        
+    var SceneController = require('app/SceneController');
+    var Signup          = require('core/Signup2');
+
+    // Scenes
+    var NuclearScene    = require('app/scenes/NuclearScene');
+
+    //Signup.setMessage('test');
+
+    var mainCtx = Engine.createContext();
+    mainCtx.setPerspective( 1000 );
+
+    var signup = new Signup();
+
+    mainCtx.add( SceneController );
+    mainCtx.add( signup );
+
+    SceneController.addScenes({'Nuclear': NuclearScene});
+    SceneController.setScene('Nuclear');
+});
+  </script>
+</body>
+</html>
